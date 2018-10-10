@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script type="module">
+        import { icon } from '../icons.js';
+        function run(i) {
+            const enc = encodeURIComponent(icon());
+            const src =`data:image/svg+xml;utf8,${enc}`;
+            const div = document.createElement('div');
+            div.style.width = `${800}px`;
+            div.style.height = `${800}px`;
+            div.style.backgroundSize = 'cover';
+            div.style.backgroundImage = `url('${src}')`;
+            document.body.appendChild(div);
+        }
+        console.time();
+        for (let i = 0; i < 1000; i += 1) {
+            run(i);
+        }
+        console.timeEnd();
+    </script>
+</body>
+</html>
